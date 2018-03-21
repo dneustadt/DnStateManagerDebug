@@ -5,7 +5,6 @@
         return function() {
             switch(type) {
                 case 'subscribe':
-                case 'unsubscribe':
                 case 'publish':
                     if (type === 'publish' && arguments[1]) {
                         console.log("(%s)\t\t %s [arguments: %O]", type, arguments[0], arguments[1]);
@@ -15,16 +14,23 @@
                     }
 
                     break;
+                case 'unsubscribe':
+                    console.log("(%s)\t %s", type, arguments[0]);
+
+                    break;
                 case 'addPlugin':
-                case 'removePlugin':
-                case 'updatePlugin':
-                case 'destroyPlugin':
-                    if (type === 'addPlugin' && arguments[2]) {
+                    if (arguments[2]) {
                         console.log("(%s)\t\t %s [element: %o, viewports: %O]", type, arguments[1], arguments[0], arguments[2]);
                     }
                     else {
-                        console.log("(%s)\t %s [element: %o]", type, arguments[1], arguments[0]);
+                        console.log("(%s)\t\t %s [element: %o]", type, arguments[1], arguments[0]);
                     }
+
+                    break;
+                case 'removePlugin':
+                case 'updatePlugin':
+                case 'destroyPlugin':
+                    console.log("(%s)\t %s [element: %o]", type, arguments[1], arguments[0]);
 
                     break;
                 case 'switchPlugins':
