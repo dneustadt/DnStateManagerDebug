@@ -114,7 +114,10 @@
                     'initPlugin'
                 ];
 
-            if (value && $.inArray(value, types) === -1) {
+            if (
+                (value && !$.isArray(value) && $.inArray(value, types) === -1) ||
+                ($.isArray(value) && !value.every(function (val) { return $.inArray(val, types) !== -1; }))
+            ) {
                 console.error('Allowed types: %s', types.toString());
 
                 return;
