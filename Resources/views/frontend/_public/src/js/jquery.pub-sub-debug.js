@@ -1,61 +1,72 @@
 ;(function ($) {
 
-    $.debugPubSub = function (func, type) {
+    window.debugPubSub = {
 
-        return function() {
-            switch(type) {
-                case 'subscribe':
-                case 'publish':
-                    if (type === 'publish' && arguments[1]) {
-                        console.log("(%s)\t\t %s [arguments: %O]", type, arguments[0], arguments[1]);
-                    }
-                    else {
-                        console.log("(%s)\t\t %s", type, arguments[0]);
-                    }
+        getIndents: function (type) {
+            var minLength = 14,
+                indents = "";
 
-                    break;
-                case 'unsubscribe':
-                    console.log("(%s)\t %s", type, arguments[0]);
-
-                    break;
-                case 'addPlugin':
-                    if (arguments[2]) {
-                        console.log("(%s)\t\t %s [element: %o, viewports: %O]", type, arguments[1], arguments[0], arguments[2]);
-                    }
-                    else {
-                        console.log("(%s)\t\t %s [element: %o]", type, arguments[1], arguments[0]);
-                    }
-
-                    break;
-                case 'removePlugin':
-                case 'updatePlugin':
-                case 'destroyPlugin':
-                    console.log("(%s)\t %s [element: %o]", type, arguments[1], arguments[0]);
-
-                    break;
-                case 'switchPlugins':
-                    console.info("(%s)\t %c[previousState: %s, currentState: %s]", type, 'font-weight:bold', arguments[0], arguments[1]);
-
-                    break;
+            while ((type + indents).length < minLength) {
+                indents = indents + " ";
             }
 
-            return func.apply(
-                this,
-                arguments
-            );
+            return indents;
+        },
+
+        decorate: function (func, type) {
+            var me = this;
+
+            return function () {
+                var indents = me.getIndents(type);
+
+                switch (type) {
+                    case 'subscribe':
+                    case 'unsubscribe':
+                    case 'publish':
+                        if (type === 'publish' && arguments[1]) {
+                            console.log("(%s)%s %s [arguments: %O]", type, indents, arguments[0], arguments[1]);
+                        }
+                        else {
+                            console.log("(%s)%s %s", type, indents, arguments[0]);
+                        }
+
+                        break;
+                    case 'addPlugin':
+                    case 'removePlugin':
+                    case 'updatePlugin':
+                    case 'destroyPlugin':
+                        if (type === 'addPlugin' && arguments[2]) {
+                            console.log("(%s)%s %s [element: %o, viewports: %O]", type, indents, arguments[1], arguments[0], arguments[2]);
+                        }
+                        else {
+                            console.log("(%s)%s %s [element: %o]", type, indents, arguments[1], arguments[0]);
+                        }
+
+                        break;
+                    case 'switchPlugins':
+                        console.log("(%s)%s %c[previousState: %s, currentState: %s]", type, indents, 'font-weight:bold', arguments[0], arguments[1]);
+
+                        break;
+                }
+
+                return func.apply(
+                    this,
+                    arguments
+                );
+            }
         }
 
     };
 
-    $.subscribe = $.debugPubSub($.subscribe, 'subscribe');
-    $.unsubscribe = $.debugPubSub($.unsubscribe, 'unsubscribe');
-    $.publish = $.debugPubSub($.publish, 'publish');
+    $.subscribe = window.debugPubSub.decorate($.subscribe, 'subscribe');
+    $.unsubscribe = window.debugPubSub.decorate($.unsubscribe, 'unsubscribe');
+    $.publish = window.debugPubSub.decorate($.publish, 'publish');
 
-    window.StateManager.addPlugin = $.debugPubSub(window.StateManager.addPlugin, 'addPlugin');
-    window.StateManager.removePlugin = $.debugPubSub(window.StateManager.removePlugin, 'removePlugin');
-    window.StateManager.updatePlugin = $.debugPubSub(window.StateManager.updatePlugin, 'updatePlugin');
-    window.StateManager.destroyPlugin = $.debugPubSub(window.StateManager.destroyPlugin, 'destroyPlugin');
+    window.StateManager.addPlugin = window.debugPubSub.decorate(window.StateManager.addPlugin, 'addPlugin');
+    window.StateManager.removePlugin = window.debugPubSub.decorate(window.StateManager.removePlugin, 'removePlugin');
+    window.StateManager.updatePlugin = window.debugPubSub.decorate(window.StateManager.updatePlugin, 'updatePlugin');
+    window.StateManager.destroyPlugin = window.debugPubSub.decorate(window.StateManager.destroyPlugin, 'destroyPlugin');
 
-    window.StateManager._switchPlugins = $.debugPubSub(window.StateManager._switchPlugins, 'switchPlugins');
+    window.StateManager._switchPlugins = window.debugPubSub.decorate(window.StateManager._switchPlugins, 'switchPlugins');
 
 }(jQuery));
