@@ -3,34 +3,29 @@
     $.debugPubSub = function (func, type) {
 
         return function() {
-            var log = {
-                'type': type
-            };
-
             switch(type) {
                 case 'subscribe':
                 case 'unsubscribe':
                 case 'publish':
-                    log.event = arguments[0];
-
                     if (type === 'publish' && arguments[1]) {
-                        log.arguments = arguments[1];
+                        console.log("(%s)\t\t %s [arguments: %O]", type, arguments[0], arguments[1]);
+                    }
+                    else {
+                        console.log("(%s)\t\t %s", type, arguments[0]);
                     }
 
                     break;
                 case 'addPlugin':
                 case 'removePlugin':
-                    log.selector = arguments[0];
-                    log.plugin = arguments[1];
-
                     if (type === 'addPlugin' && arguments[2]) {
-                        log.viewports = arguments[2];
+                        console.log("(%s)\t\t %s [element: %o, viewports: %O]", type, arguments[1], arguments[0], arguments[2]);
+                    }
+                    else {
+                        console.log("(%s)\t %s [element: %o]", type, arguments[1], arguments[0]);
                     }
 
                     break;
             }
-
-            console.log(log);
 
             return func.apply(
                 this,
