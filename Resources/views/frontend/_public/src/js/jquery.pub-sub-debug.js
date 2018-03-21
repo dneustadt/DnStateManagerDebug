@@ -2,6 +2,12 @@
 
     window.debugPubSub = {
 
+        'filter' : JSON.parse(window.localStorage.getItem('debug-pub-sub/filter')) || {
+            'type': [],
+            'event': [],
+            'plugin': []
+        },
+
         getIndents: function (type) {
             var minLength = 14,
                 indents = "";
@@ -15,6 +21,10 @@
 
         decorate: function (func, type) {
             var me = this;
+
+            if (me.filter.type.length !== 0 && $.inArray(type, me.filter.type) === -1) {
+                type = null;
+            }
 
             return function () {
                 var indents = me.getIndents(type);
@@ -73,6 +83,56 @@
                     arguments
                 );
             }
+        },
+
+        setFilter: function (key, value) {
+            var me = this;
+
+            me.filter[key] = [];
+
+            if ($.isArray(value)) {
+                me.filter[key] = value;
+            }
+            else if (value) {
+                me.filter[key].push(value)
+            }
+
+            window.localStorage.setItem('debug-pub-sub/filter', JSON.stringify(me.filter))
+        },
+
+        setFilterType: function (value) {
+            var me = this,
+                types = [
+                    'subscribe',
+                    'unsubscribe',
+                    'publish',
+                    'addPlugin',
+                    'removePlugin',
+                    'updatePlugin',
+                    'destroyPlugin',
+                    'switchPlugins',
+                    'initPlugin'
+                ];
+
+            if (value && $.inArray(value, types) === -1) {
+                console.error('Allowed types: %s', types.toString());
+
+                return;
+            }
+
+            me.setFilter('type', value);
+        },
+
+        setFilterEvent: function (value) {
+            var me = this;
+
+            me.setFilter('event', value);
+        },
+
+        setFilterPlugin: function (value) {
+            var me = this;
+
+            me.setFilter('plugin', value);
         }
 
     };
