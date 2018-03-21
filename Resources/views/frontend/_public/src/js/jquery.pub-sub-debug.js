@@ -47,8 +47,8 @@
 
     window.StateManager.addPlugin = $.debugPubSub(window.StateManager.addPlugin, 'addPlugin');
     window.StateManager.removePlugin = $.debugPubSub(window.StateManager.removePlugin, 'removePlugin');
-    window.StateManager.updatePlugin = $.debugPubSub(window.StateManager.removePlugin, 'updatePlugin');
-    window.StateManager.destroyPlugin = $.debugPubSub(window.StateManager.removePlugin, 'destroyPlugin');
+    window.StateManager.updatePlugin = $.debugPubSub(window.StateManager.updatePlugin, 'updatePlugin');
+    window.StateManager.destroyPlugin = $.debugPubSub(window.StateManager.destroyPlugin, 'destroyPlugin');
 
     window.StateManager._switchPlugins = $.debugPubSub(window.StateManager._switchPlugins, 'switchPlugins');
 
