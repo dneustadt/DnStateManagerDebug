@@ -47,6 +47,25 @@
                         console.log("(%s)%s %c[previousState: %s, currentState: %s]", type, indents, 'font-weight:bold', arguments[0], arguments[1]);
 
                         break;
+                    case 'initPlugin':
+                        func.apply(
+                            this,
+                            arguments
+                        );
+
+                        var element = arguments[0],
+                            selector = arguments[1],
+                            pluginName = arguments[2],
+                            plugin = element.data('plugin_' + pluginName);
+
+                        if (plugin) {
+                            console.log("(%s)%s %s [selector: %o, events: %O]", type, indents, pluginName, selector, plugin._events);
+                        }
+                        else {
+                            console.log("(%s)%s %s [selector: %o]", type, indents, pluginName, selector);
+                        }
+
+                        return;
                 }
 
                 return func.apply(
@@ -68,5 +87,6 @@
     window.StateManager.destroyPlugin = window.debugPubSub.decorate(window.StateManager.destroyPlugin, 'destroyPlugin');
 
     window.StateManager._switchPlugins = window.debugPubSub.decorate(window.StateManager._switchPlugins, 'switchPlugins');
+    window.StateManager._initSinglePlugin = window.debugPubSub.decorate(window.StateManager._initSinglePlugin, 'initPlugin');
 
 }(jQuery));
