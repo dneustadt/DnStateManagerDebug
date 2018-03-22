@@ -1,7 +1,7 @@
 {
   "name": "dneustadt/dn-state-manager-debug",
   "keywords": ["debug", "javascript", "console", "statemanager", "state", "events", "plugins", "jquery", "shopware", "shopware-plugin"],
-  "description": "Shopware plugin to switch variants in basket and checkout views",
+  "description": "Shopware plugin featuring a Javascript console debug tool for the StateManager",
   "license": "MIT",
   "type": "shopware-plugin",
   "extra": {
