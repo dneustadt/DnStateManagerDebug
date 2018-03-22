@@ -48,6 +48,19 @@ include part of the name.
 
 To reset filter criterias call the function without any arguments.
 
+## Example output
+
+```
+(initPlugin)     swMenuScroller [selector: "*[data-menu-scroller="true"]", events: ▶ Array(3)]
+(initPlugin)     dnVariantSwitch [selector: "*[data-variant-switch="true"]"]
+(subscribe)      plugin/swAddArticle/onAddArticle
+(subscribe)      plugin/swCollapseCart/onRemoveArticleFinished
+(publish)        plugin/swAjaxProductNavigation/onProductNavigationLoaded [arguments: ▶ Array(2)]
+(publish)        plugin/swProductSlider/onBuffer [arguments: ▶ Array(4)]
+(switchPlugins)  [previousState: xl, currentState: xs]
+(destroyPlugin)  swTabMenu [element: ▶ n.fn.init [div.tab-menu--product.js--tab-menu, prevObject: n.fn.init(1), context: document, selector: ".tab-menu--product"]]
+(unsubscribe)    plugin/swImageSlider/onRightArrowClick.swImageZoom
+```
 
 ## Installation
 
