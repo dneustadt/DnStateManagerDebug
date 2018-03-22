@@ -1,6 +1,6 @@
 # State Manager Debug
 
-Shopware Plugin featuring a Javascript console debug tool. 
+Shopware Plugin featuring a Javascript console debug tool for the StateManager. 
 
 Will log ...
 
