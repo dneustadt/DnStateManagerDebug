@@ -5,8 +5,8 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="dn_jquery_pub_sub_debug.subscriber.javascript_collect" class="DnJqueryPubSubDebug\Subscriber\JavascriptCollect">
-            <argument>%dn_jquery_pub_sub_debug.plugin_dir%</argument>
+        <service id="dn_state_manager_debug.subscriber.javascript_collect" class="DnStateManagerDebug\Subscriber\JavascriptCollect">
+            <argument>%dn_state_manager_debug.plugin_dir%</argument>
             <tag name="shopware.event_subscriber"/>
         </service>
     </services>

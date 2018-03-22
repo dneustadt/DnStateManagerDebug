@@ -1,6 +1,6 @@
 <?php
 
-namespace DnJqueryPubSubDebug\Subscriber;
+namespace DnStateManagerDebug\Subscriber;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Enlight\Event\SubscriberInterface;
@@ -43,7 +43,7 @@ class JavascriptCollect implements SubscriberInterface
     public function addJsFiles()
     {
         $jsFiles = [
-            $this->pluginDirectory . '/Resources/views/frontend/_public/src/js/jquery.pub-sub-debug.js',
+            $this->pluginDirectory . '/Resources/views/frontend/_public/src/js/jquery.state-manager-debug.js',
         ];
 
         return new ArrayCollection($jsFiles);

@@ -2,7 +2,7 @@
 
     window.debugPubSub = {
 
-        'filter' : JSON.parse(window.localStorage.getItem('debug-pub-sub/filter')) || {
+        'filter' : JSON.parse(window.localStorage.getItem('state-manager-debug/filter')) || {
             'type': [],
             'event': [],
             'plugin': []
@@ -119,7 +119,7 @@
                 me.filter[key].push(value)
             }
 
-            window.localStorage.setItem('debug-pub-sub/filter', JSON.stringify(me.filter))
+            window.localStorage.setItem('state-manager-debug/filter', JSON.stringify(me.filter))
         },
 
         setFilterType: function (value) {

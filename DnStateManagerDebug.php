@@ -1,6 +1,6 @@
 <?php
 
-namespace DnJqueryPubSubDebug;
+namespace DnStateManagerDebug;
 
 use Shopware\Components\Plugin;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -9,17 +9,17 @@ use Shopware\Components\Plugin\Context\InstallContext;
 use Shopware\Components\Plugin\Context\UpdateContext;
 
 /**
- * Class DnJqueryPubSubDebug
- * @package DnJqueryPubSubDebug
+ * Class DnStateManagerDebug
+ * @package DnStateManagerDebug
  */
-class DnJqueryPubSubDebug extends Plugin
+class DnStateManagerDebug extends Plugin
 {
     /**
      * @param ContainerBuilder $container
      */
     public function build(ContainerBuilder $container)
     {
-        $container->setParameter('dn_jquery_pub_sub_debug.plugin_dir', $this->getPath());
+        $container->setParameter('dn_state_manager_debug.plugin_dir', $this->getPath());
 
         parent::build($container);
     }
