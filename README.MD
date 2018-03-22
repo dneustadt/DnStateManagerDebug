@@ -67,6 +67,11 @@ To reset filter criterias call the function without any arguments.
 * Clone this repository into a folder **DnStateManagerDebug** within the **custom/plugins** directory of the Shopware installation.
 * Install the plugin through the Plugin-Manager within the Shopware backend.
 
+### Install with composer
+
+* Change to your root installation of shopware
+* Run command `composer require dneustadt/dn-state-manager-debug` and install and activate plugin with Plugin Manager 
+
 ## Requirements
 
 * Shopware 5.4.0 or higher
