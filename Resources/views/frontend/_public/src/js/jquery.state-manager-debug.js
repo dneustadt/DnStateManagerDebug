@@ -1,6 +1,6 @@
 ;(function ($) {
 
-    window.debugPubSub = {
+    window.StateDebug = {
 
         'filter' : JSON.parse(window.localStorage.getItem('state-manager-debug/filter')) || {
             'type': [],
@@ -181,16 +181,16 @@
 
     };
 
-    $.subscribe = window.debugPubSub.decorate($.subscribe, 'subscribe');
-    $.unsubscribe = window.debugPubSub.decorate($.unsubscribe, 'unsubscribe');
-    $.publish = window.debugPubSub.decorate($.publish, 'publish');
+    $.subscribe = window.StateDebug.decorate($.subscribe, 'subscribe');
+    $.unsubscribe = window.StateDebug.decorate($.unsubscribe, 'unsubscribe');
+    $.publish = window.StateDebug.decorate($.publish, 'publish');
 
-    window.StateManager.addPlugin = window.debugPubSub.decorate(window.StateManager.addPlugin, 'addPlugin');
-    window.StateManager.removePlugin = window.debugPubSub.decorate(window.StateManager.removePlugin, 'removePlugin');
-    window.StateManager.updatePlugin = window.debugPubSub.decorate(window.StateManager.updatePlugin, 'updatePlugin');
-    window.StateManager.destroyPlugin = window.debugPubSub.decorate(window.StateManager.destroyPlugin, 'destroyPlugin');
+    window.StateManager.addPlugin = window.StateDebug.decorate(window.StateManager.addPlugin, 'addPlugin');
+    window.StateManager.removePlugin = window.StateDebug.decorate(window.StateManager.removePlugin, 'removePlugin');
+    window.StateManager.updatePlugin = window.StateDebug.decorate(window.StateManager.updatePlugin, 'updatePlugin');
+    window.StateManager.destroyPlugin = window.StateDebug.decorate(window.StateManager.destroyPlugin, 'destroyPlugin');
 
-    window.StateManager._switchPlugins = window.debugPubSub.decorate(window.StateManager._switchPlugins, 'switchPlugins');
-    window.StateManager._initSinglePlugin = window.debugPubSub.decorate(window.StateManager._initSinglePlugin, 'initPlugin');
+    window.StateManager._switchPlugins = window.StateDebug.decorate(window.StateManager._switchPlugins, 'switchPlugins');
+    window.StateManager._initSinglePlugin = window.StateDebug.decorate(window.StateManager._initSinglePlugin, 'initPlugin');
 
 }(jQuery));
