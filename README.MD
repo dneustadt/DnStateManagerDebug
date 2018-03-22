@@ -46,6 +46,8 @@ You can pass a single filter criteria as string or an array of multiple filter c
 Type criterias need to be exact and available (see above). Event and plugin name criterias can
 include part of the name.
 
+To reset filter criterias call the function without any arguments.
+
 
 ## Installation
 
