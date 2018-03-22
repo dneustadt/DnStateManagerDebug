@@ -7,7 +7,7 @@ use Enlight\Event\SubscriberInterface;
 
 /**
  * Class JavascriptCollect
- * @package DnVariantSwitch\Subscriber
+ * @package DnStateManagerDebug\Subscriber
  */
 class JavascriptCollect implements SubscriberInterface
 {
