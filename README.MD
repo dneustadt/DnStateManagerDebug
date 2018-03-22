@@ -1,4 +1,4 @@
-# State Manager Debug
+# Shopware StateManager Debug
 
 Shopware Plugin featuring a Javascript console debug tool for the StateManager. 
 
