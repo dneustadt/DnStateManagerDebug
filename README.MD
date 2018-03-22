@@ -58,7 +58,7 @@ To reset filter criterias call the function without any arguments.
 (publish)        plugin/swAjaxProductNavigation/onProductNavigationLoaded [arguments: ▶ Array(2)]
 (publish)        plugin/swProductSlider/onBuffer [arguments: ▶ Array(4)]
 (switchPlugins)  [previousState: xl, currentState: xs]
-(destroyPlugin)  swTabMenu [element: ▶ n.fn.init [div.tab-menu--product.js--tab-menu, prevObject: n.fn.init(1), context: document, selector: ".tab-menu--product"]]
+(destroyPlugin)  swTabMenu [element: ▶ n.fn.init [div.tab-menu--product.js--tab-menu, ...]]
 (unsubscribe)    plugin/swImageSlider/onRightArrowClick.swImageZoom
 ```
 
