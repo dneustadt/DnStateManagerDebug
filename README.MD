@@ -1,5 +1,7 @@
 # Shopware StateManager Debug
 
+> **Discontinued** - now part of [FroshProfiler](https://github.com/FriendsOfShopware/FroshProfiler)
+
 Shopware Plugin featuring a Javascript console debug tool for the StateManager. 
 
 Will log ...
